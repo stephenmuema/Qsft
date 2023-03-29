@@ -1,3 +1,4 @@
+import requests
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from rest_framework import generics, status
@@ -9,7 +10,10 @@ from rest_framework.views import APIView
 from api.models import Transaction, Account, Customer
 from api.serializers import TransactionSerializer, AccountSerializer, CustomerSerializer
 
-
+def home(request):
+    response=requests.get('http://127.0.0.1:8000/api/transactions/')
+    data=response.json()
+    return render(request,'index.html',{'data':data})
 @api_view(['GET', 'POST'])
 def transactions_list(request):
     if request.method == 'GET':
