@@ -3,7 +3,8 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 urlpatterns = [
-    path('transaction/<str:transaction_reference>/', views.TransactionDetailView.as_view(), name='transaction_view'),
-    path('customer/<int:pk>/', views.TransactionDetailView.as_view(), name='transaction_view'),
-    path('account/<int:pk>/', views.TransactionDetailView.as_view(), name='transaction_view'),
+    path('transactions/', views.transactions_list, name='transaction_view'),
+    # path('transaction/<srt:transaction_reference>/', views.transaction_details, name='transaction_detail_view'),
+    # path('customers/', views.ListCustomers.as_view(), name='customer_view'),
+    # path('account/<int:pk>/', views.AccountDetailView.as_view(), name='account_view'),
 ]

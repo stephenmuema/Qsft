@@ -21,15 +21,18 @@ class Customer(models.Model):
 # Accounts linked to customers
 class Account(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    actual_balance = models.CharField(max_length=20, null=True)
-    available_balance = models.CharField(max_length=20, null=True)
+    actual_balance = models.IntegerField( null=False)
+    available_balance = models.IntegerField(null=False)
+
+    def __str__(self):
+        return '{} {}'.format(self.customer, self.pk)
 
 
 # Transactions linked to a given account
 class Transaction(models.Model):
-    account_name = models.ForeignKey(Account, on_delete=models.CASCADE)
+    phone_number = models.CharField(max_length=20,null=False)
 
-    transaction_reference = models.CharField(max_length=20, null=True)
-    transaction_code = models.CharField(max_length=20, null=True)
+    transaction_reference = models.CharField(max_length=20, null=False, unique=True)
+    transaction_code = models.CharField(max_length=20, null=False,unique=True)
     narration = models.CharField(max_length=20, null=True)
     amount = models.IntegerField(null=False)
