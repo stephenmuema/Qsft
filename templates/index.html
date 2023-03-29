@@ -12,39 +12,34 @@
   </head>
  <body>
 
- <form class="form-inline mt-6" action="">
-  <div class="form-group mb-2">
-    <label class="sr-only">Phone Number</label>
-    <input type="text"  class="form-control-plaintext" name="phone" placeholder="Phone Number">
-  </div>
 
-      <div class="form-group mb-2">
-    <label class="sr-only">Transaction code</label>
-    <input type="text"  class="form-control-plaintext" name="code" placeholder="COde" >
-  </div>
-
-     <div class="form-group mb-2">
-    <label class="sr-only">Transaction reference</label>
-    <input type="text"  class="form-control-plaintext" name="ref" placeholder="Reference" >
-  </div>
-
-
-     <div class="form-group mb-2">
-    <label class="sr-only">Narrative</label>
-    <input type="text"  class="form-control-plaintext" name="narrative" placeholder="Narrative" >
-  </div>
-     <div class="form-group mb-2">
-    <label class="sr-only">Amount</label>
-    <input type="text"  class="form-control-plaintext" name="amount" placeholder="Amount" >
-  </div>
-
-  <button type="submit" class="btn btn-primary mb-2">Submit</button>
-</form>
-
-    <h1>Transactions</h1>
-    {% for i in data %}
-    <strong>{{i}}</strong>
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">phone Number</th>
+      <th scope="col">reference</th>
+      <th scope="col">code</th>
+      <th scope="col">narrative</th>
+      <th scope="col">amount</th>
+    </tr>
+  </thead>
+  <tbody>
+     {% for i in data %}
+    <tr>
+      <th scope="row">{{ i.id }}</th>
+      <td>{{ i.phone_number }}</td>
+      <td>{{ i.transaction_reference }}</td>
+      <td>{{ i.transaction_code }}</td>
+      <td>{{ i.narration }}</td>
+      <td>{{ i.amount }}</td>
+    </tr>
     {% endfor %}
+
+  </tbody>
+</table>
+
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
